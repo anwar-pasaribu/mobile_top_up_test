@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Finaccel Test</string>
+    <string name="hint_top_up_enter_mobile_number">Mobile number</string>
+</resources>
