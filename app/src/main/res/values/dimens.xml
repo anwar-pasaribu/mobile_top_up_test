@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <dimen name="item_gap_small">6dp</dimen>
     <dimen name="item_gap_medium">10dp</dimen>
     <dimen name="item_gap_regular">16dp</dimen>
 
     <dimen name="button_medium">48dp</dimen>
+
+    <dimen name="item_gap_separator">1dp</dimen>
+    <dimen name="shape_radius_m">5dp</dimen>
 </resources>

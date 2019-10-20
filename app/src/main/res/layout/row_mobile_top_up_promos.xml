@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="selectMobileCreditAmount"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="credit"
+            type="com.anwar.finacceltest.model.MobileCredit" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/viewRowMobileTopUpPromosSeparator"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/item_gap_medium"
+            android:background="@color/borderColor"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvRowMobileTopUpPromosLabel"
+            style="?attr/textAppearanceListItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/item_gap_regular"
+            android:layout_marginTop="@dimen/item_gap_regular"
+            android:text="@string/lbl_promos"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewRowMobileTopUpPromosSeparator" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRowMobileTopUpPromosList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="@dimen/item_gap_regular"
+            android:paddingLeft="@dimen/item_gap_regular"
+            android:paddingBottom="@dimen/item_gap_regular"
+            android:clipToPadding="false"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRowMobileTopUpPromosLabel"
+            tools:itemCount="2"
+            tools:listitem="@layout/row_mobile_top_up_promo_item" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

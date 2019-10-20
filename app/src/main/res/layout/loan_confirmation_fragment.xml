@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.loanconfirmation.LoanConfirmationFragment">
+
+    <FrameLayout
+        android:id="@+id/parentLoanConfirmationFragmentOperatorLogoContainer"
+        android:layout_width="@dimen/button_medium"
+        android:layout_height="@dimen/button_medium"
+        android:layout_marginLeft="@dimen/item_gap_regular"
+        android:layout_marginTop="@dimen/item_gap_regular"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivLoanConfirmationFragmentOperatorLogo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/item_gap_small"
+            android:padding="@dimen/item_gap_separator"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logo_indosat" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tilLoanConfirmationFragmentEnterPhoneNumber"
+        style="?attr/textAppearanceListItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/item_gap_regular"
+        android:layout_marginRight="@dimen/item_gap_regular"
+        android:hint="@string/hint_top_up_enter_mobile_number"
+        app:layout_constraintBottom_toBottomOf="@id/parentLoanConfirmationFragmentOperatorLogoContainer"
+        app:layout_constraintLeft_toRightOf="@id/parentLoanConfirmationFragmentOperatorLogoContainer"
+        app:layout_constraintTop_toTopOf="@id/parentLoanConfirmationFragmentOperatorLogoContainer" />
+
+    <View
+        android:id="@+id/viewLoanConfirmationFragmentSeparator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/item_gap_medium"
+        android:layout_marginTop="@dimen/item_gap_regular"
+        android:background="@color/borderColor"
+        app:layout_constraintTop_toBottomOf="@id/parentLoanConfirmationFragmentOperatorLogoContainer" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewLoanConfirmationFragmentSeparator"
+        android:layout_margin="@dimen/item_gap_regular"
+        app:cardElevation="@dimen/item_gap_small"
+        app:cardCornerRadius="@dimen/shape_radius_m"
+        app:cardBackgroundColor="@color/colorAttention"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/item_gap_medium"
+            android:text="OTP is not needed for the first transaction of the day that is less than Rp 200.000" />
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

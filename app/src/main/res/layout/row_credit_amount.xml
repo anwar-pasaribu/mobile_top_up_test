@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="selectMobileCreditAmount"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="credit"
+            type="com.anwar.finacceltest.model.MobileCredit" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/item_gap_regular"
+        android:paddingTop="@dimen/item_gap_medium"
+        android:paddingRight="@dimen/item_gap_regular"
+        android:paddingBottom="@dimen/item_gap_medium">
+
+        <TextView
+            android:id="@+id/tvRowCreditAmountLabel"
+            style="?attr/textAppearanceBody1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_credit_nominal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvRowCreditAmountValue"
+            style="?attr/textAppearanceListItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:formattedCreditValue="@{credit}"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvRowCreditAmountLabel"
+            tools:text="@sample/amounts.json/data/val" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRowCreditAmountSelect"
+            style="?attr/materialButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="120dp"
+            android:onClick="@{selectMobileCreditAmount}"
+            app:formattedCreditPrice="@{credit}"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@sample/amounts.json/data/label" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

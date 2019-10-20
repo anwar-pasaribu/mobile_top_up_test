@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Finaccel Test</string>
     <string name="hint_top_up_enter_mobile_number">Mobile number</string>
+    <string name="lbl_credit_nominal">Nominal:</string>
+    <string name="title_mobile_top_up">Top Up</string>
+
+    <string name="lbl_price_idr">Rp %1$s</string>
+    <string name="lbl_promos">Promos</string>
 </resources>

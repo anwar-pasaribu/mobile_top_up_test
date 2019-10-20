@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/mainFragment">
+
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.anwar.finacceltest.ui.main.MainFragment"
+        android:label="@string/title_mobile_top_up"
+        tools:layout="@layout/main_fragment">
+
+        <action
+            android:id="@+id/actionOpenLoanConfirmation"
+            app:destination="@id/loanConfirmationFragment" />
+
+        <action
+            android:id="@+id/actionOpenMerchantPromo"
+            app:destination="@id/merchantPromoFragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/loanConfirmationFragment"
+        android:name="com.anwar.finacceltest.ui.loanconfirmation.LoanConfirmationFragment"
+        android:label="Loan Confirmation"
+        tools:layout="@layout/loan_confirmation_fragment" />
+
+    <fragment
+        android:id="@+id/merchantPromoFragment"
+        android:name="com.anwar.finacceltest.ui.promo.MerchantPromoFragment"
+        android:label="Merchant Promo"
+        tools:layout="@layout/merchant_promo_fragment">
+        <argument
+            android:name="promoItem"
+            app:argType="com.anwar.finacceltest.model.Promo" />
+    </fragment>
+</navigation>

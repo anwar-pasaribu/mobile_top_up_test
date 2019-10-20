@@ -1,99 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.main.MainFragment">
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayoutTopUpFragment"
+        <variable
+            name="topUpViewModel"
+            type="com.anwar.finacceltest.ui.main.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="match_parent"
+        tools:context=".ui.main.MainFragment">
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabItemTopUpFragmentCredit"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayoutTopUpFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabItemTopUpFragmentCredit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pulsa" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabItemTopUpFragmentData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data Package" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <!-- region Input user phone number -->
+        <FrameLayout
+            android:id="@+id/parentTopUpFragmentOperatorLogoContainer"
+            android:layout_width="@dimen/button_medium"
+            android:layout_height="@dimen/button_medium"
+            android:layout_marginLeft="@dimen/item_gap_regular"
+            android:layout_marginTop="@dimen/item_gap_regular"
+            android:background="@drawable/ic_circle_blue"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tabLayoutTopUpFragment">
+
+            <ImageView
+                android:id="@+id/ivTopUpFragmentOperatorLogo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/item_gap_small"
+                android:padding="@dimen/item_gap_separator"
+                android:scaleType="fitCenter"
+                android:src="@drawable/logo_indosat"
+                app:operatorLogo="@{topUpViewModel.operatorType}" />
+
+        </FrameLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilTopUpFragmentEnterPhoneNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/item_gap_regular"
+            android:layout_marginRight="@dimen/item_gap_regular"
+            android:hint="@string/hint_top_up_enter_mobile_number"
+            app:endIconMode="clear_text"
+            app:layout_constraintBottom_toBottomOf="@id/parentTopUpFragmentOperatorLogoContainer"
+            app:layout_constraintLeft_toRightOf="@id/parentTopUpFragmentOperatorLogoContainer"
+            app:layout_constraintRight_toLeftOf="@+id/ibTopUpFragmentAddContact"
+            app:layout_constraintTop_toTopOf="@id/parentTopUpFragmentOperatorLogoContainer">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etTopUpFragmentPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="phone"
+                android:text="@={topUpViewModel.phoneNumber}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <ImageButton
+            android:id="@+id/ibTopUpFragmentAddContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pulsa" />
+            android:layout_marginRight="@dimen/item_gap_regular"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_contacts_black_24dp"
+            app:layout_constraintBottom_toBottomOf="@id/parentTopUpFragmentOperatorLogoContainer"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@id/parentTopUpFragmentOperatorLogoContainer" />
 
-        <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabItemTopUpFragmentData"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Data Package" />
+        <!-- endregion -->
 
-    </com.google.android.material.tabs.TabLayout>
-
-    <!-- region Input user phone number -->
-    <FrameLayout
-        android:id="@+id/parentTopUpFragmentOperatorLogoContainer"
-        android:layout_width="@dimen/button_medium"
-        android:layout_height="@dimen/button_medium"
-        android:layout_marginLeft="@dimen/item_gap_regular"
-        android:layout_marginTop="@dimen/item_gap_regular"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tabLayoutTopUpFragment">
-
-        <ImageView
-            android:id="@+id/ivTopUpFragmentOperatorLogo"
+        <View
+            android:id="@+id/viewTopUpFragmentSeparator"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:src="@tools:sample/avatars" />
+            android:layout_height="@dimen/item_gap_medium"
+            android:layout_marginTop="@dimen/item_gap_regular"
+            android:background="@color/borderColor"
+            app:layout_constraintTop_toBottomOf="@id/parentTopUpFragmentOperatorLogoContainer" />
 
-    </FrameLayout>
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nsvTopUpFragmentContent"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/viewTopUpFragmentSeparator">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/tilTopUpFragmentEnterPhoneNumber"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/item_gap_regular"
-        android:layout_marginRight="@dimen/item_gap_regular"
-        android:hint="@string/hint_top_up_enter_mobile_number"
-        app:endIconMode="clear_text"
-        app:layout_constraintBottom_toBottomOf="@id/parentTopUpFragmentOperatorLogoContainer"
-        app:layout_constraintLeft_toRightOf="@id/parentTopUpFragmentOperatorLogoContainer"
-        app:layout_constraintRight_toLeftOf="@+id/ibTopUpFragmentAddContact"
-        app:layout_constraintTop_toTopOf="@id/parentTopUpFragmentOperatorLogoContainer">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/nsvTopUpFragmentContentRoot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTopUpFragment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/row_credit_amount" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+                <View
+                    android:id="@+id/viewTopUpFragmentPromoSeparator"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/item_gap_medium"
+                    android:background="@color/borderColor"
+                    app:layout_constraintTop_toBottomOf="@id/rvTopUpFragment" />
 
-    <ImageButton
-        android:id="@+id/ibTopUpFragmentAddContact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/item_gap_regular"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_contacts_black_24dp"
-        app:layout_constraintBottom_toBottomOf="@id/parentTopUpFragmentOperatorLogoContainer"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/parentTopUpFragmentOperatorLogoContainer" />
+                <TextView
+                    android:id="@+id/tvTopUpFragmentLabel"
+                    style="?attr/textAppearanceListItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/item_gap_regular"
+                    android:layout_marginTop="@dimen/item_gap_regular"
+                    android:text="@string/lbl_promos"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/viewTopUpFragmentPromoSeparator" />
 
-    <!-- endregion -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvTopUpFragmentPromoList"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/item_gap_regular"
+                    android:paddingTop="@dimen/item_gap_regular"
+                    android:paddingBottom="@dimen/item_gap_regular"
+                    android:paddingRight="@dimen/item_gap_small"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tvTopUpFragmentLabel"
+                    tools:itemCount="1"
+                    tools:listitem="@layout/row_mobile_top_up_promo_item" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <View
-        android:id="@+id/viewTopUpFragmentSeparator"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/item_gap_medium"
-        android:layout_marginTop="@dimen/item_gap_regular"
-        android:background="@color/borderColor"
-        app:layout_constraintTop_toBottomOf="@id/parentTopUpFragmentOperatorLogoContainer" />
+        </androidx.core.widget.NestedScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/viewTopUpFragmentSeparator" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
